@@ -59,9 +59,6 @@ int main(int argc, char **argv)
 	MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
 	MPI_Comm_rank(MPI_COMM_WORLD, &ID);
 
-	printf("Aplikacja pracuje na %d procesorach\n", num_procs);
-	printf("Aktualnie pracuje procesor: %d\n", ID);
-
 	liczba_losowan_w_procesorze = liczba_losowan / num_procs;
 
 	// Tworzymy inny seed dla każdego procesora w celu wygenerowania innych liczb
@@ -84,8 +81,6 @@ int main(int argc, char **argv)
 		}
 	}
 	pi = (long double)ile_w_kole / liczba_losowan_w_procesorze * 4;
-
-	printf("Dla procesora %d po %d iteracjach, liczba w kole to %d, a przyblizona liczba pi to: %Lg\n", ID, liczba_losowan_w_procesorze, ile_w_kole, pi);
 
 	// Współbieżną część kodu realizujemy gdy mamy większą niż 1 liczbę procesów
 	// W innym wypadku zwracamy rezultat pracy synchronicznego kodu
