@@ -93,7 +93,6 @@ int main(int argc, char **argv)
 		if (ID == 0)
 		{
 			// Obliczamy liczbę pi
-			printf("Liczba trafionych asynchronicznych wyników to: %d\n", suma_ile_w_kole);
 			pi = (long double)suma_ile_w_kole / liczba_losowan * 4;
 
 			// Sprawdzamy długość przebiegu programu
