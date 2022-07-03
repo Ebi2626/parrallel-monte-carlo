@@ -82,14 +82,8 @@ int main(int argc, char **argv)
 	// W innym wypadku zwracamy rezultat pracy synchronicznego kodu
 	if (num_procs != 1)
 	{
-		if (ID == 0)
-		{
-			MPI_Recv(&suma_ile_w_kole, 1, MPI_INT, mod(ID + 1, num_procs), 1, MPI_COMM_WORLD, &stat);
-		}
-		else
-		{
-			MPI_Ssend(&ile_w_kole, 1, MPI_INT, 0, 1, MPI_COMM_WORLD);
-		}
+
+		// Sumujemy częściowe wyniki obliczone w procesach
 		MPI_Reduce(&ile_w_kole, &suma_ile_w_kole, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
 
 		// Zwracamy wynik pracy asynchonicznego kodu
